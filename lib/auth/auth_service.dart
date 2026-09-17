@@ -18,7 +18,6 @@ class AuthService extends ChangeNotifier {
   bool get isAuthenticated => _currentToken != null;
   bool get isLoading => _isLoading;
 
-  /// Performs login and stores the tokens
   Future<void> login(String username, String password) async {
     _setLoading(true);
     try {
@@ -42,7 +41,6 @@ class AuthService extends ChangeNotifier {
     }
   }
 
-  /// Refreshes the access token and returns the new token pair
   Future<AuthToken?> refreshToken() async {
     if (_currentToken == null) return null;
 
@@ -60,7 +58,6 @@ class AuthService extends ChangeNotifier {
         return _currentToken;
       }
     } catch (e) {
-      // If refresh fails (e.g., refresh token expired), log out.
       logout();
     }
     return null;
