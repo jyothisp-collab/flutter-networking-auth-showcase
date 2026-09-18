@@ -7,7 +7,6 @@ class DataService {
 
   DataService(this._apiClient);
 
-  /// Demonstrates an authenticated GET request.
   Future<DataModel> getProtectedData() async {
     try {
       final response = await _apiClient.dio.get('/protected-data');
@@ -17,7 +16,6 @@ class DataService {
     }
   }
 
-  /// Demonstrates an unauthenticated GET request.
   Future<DataModel> getPublicData() async {
     try {
       final response = await _apiClient.dio.get('/public-data');
@@ -27,7 +25,6 @@ class DataService {
     }
   }
 
-  /// Demonstrates a POST request.
   Future<DataModel> createPublicData(String title) async {
     try {
       final response = await _apiClient.dio.post(
