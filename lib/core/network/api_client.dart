@@ -15,7 +15,6 @@ class ApiClient {
       ),
     );
 
-    // Use fake adapter for showcase purposes
     dio.httpClientAdapter = FakeHttpClientAdapter();
 
     dio.interceptors.addAll([
@@ -23,7 +22,7 @@ class ApiClient {
       LogInterceptor(
         responseBody: true,
         requestBody: true,
-      ), // Useful for debugging
+      ), 
     ]);
   }
 }
