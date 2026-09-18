@@ -47,7 +47,6 @@ class AuthInterceptor extends Interceptor {
       }
     }
 
-    // If it's not a 401 or refresh failed, pass the error forward
     handler.next(err);
   }
 }
