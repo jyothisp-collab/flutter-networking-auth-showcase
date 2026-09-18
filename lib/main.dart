@@ -5,7 +5,6 @@ import 'features/data/data_service.dart';
 import 'features/ui/home_screen.dart';
 
 void main() {
-  // 1. Initialize core services
   final authService = AuthService();
   final apiClient = ApiClient(authService);
   final dataService = DataService(apiClient);
