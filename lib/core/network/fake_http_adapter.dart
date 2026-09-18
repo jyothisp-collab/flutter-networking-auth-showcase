@@ -2,8 +2,6 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:dio/dio.dart';
 
-/// A fake HttpClientAdapter to simulate API responses for this showcase.
-/// It accurately mimics the behavior of a real network adapter.
 class FakeHttpClientAdapter implements HttpClientAdapter {
   @override
   Future<ResponseBody> fetch(
@@ -11,7 +9,6 @@ class FakeHttpClientAdapter implements HttpClientAdapter {
     Stream<Uint8List>? requestStream,
     Future<void>? cancelFuture,
   ) async {
-    // Simulate network latency
     await Future.delayed(const Duration(milliseconds: 100));
 
     final path = options.path;
@@ -24,7 +21,6 @@ class FakeHttpClientAdapter implements HttpClientAdapter {
     }
 
     if (path.endsWith('/refresh')) {
-      // Need to parse body for refresh
       String requestBody = '';
       if (options.data != null) {
         if (options.data is Map) {
@@ -64,7 +60,6 @@ class FakeHttpClientAdapter implements HttpClientAdapter {
 
     if (path.endsWith('/public-data')) {
       if (options.method == 'POST') {
-        // Mock POST body
         String title = 'Created Data';
         if (options.data is Map && options.data['title'] != null) {
           title = options.data['title'];
