@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import '../../auth/auth_service.dart';
 import 'auth_interceptor.dart';
 import 'fake_http_adapter.dart';
+import '../../auth/auth_service.dart';
 
 class ApiClient {
   late final Dio dio;
@@ -12,6 +12,10 @@ class ApiClient {
         baseUrl: 'https://api.example.com',
         connectTimeout: const Duration(seconds: 10),
         receiveTimeout: const Duration(seconds: 10),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
       ),
     );
 
@@ -19,10 +23,6 @@ class ApiClient {
 
     dio.interceptors.addAll([
       AuthInterceptor(authService, dio),
-      LogInterceptor(
-        responseBody: true,
-        requestBody: true,
-      ), 
     ]);
   }
 }

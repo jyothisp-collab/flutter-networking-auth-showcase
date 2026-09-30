@@ -9,7 +9,10 @@ void main() {
   final apiClient = ApiClient(authService);
   final dataService = DataService(apiClient);
 
-  runApp(MyApp(authService: authService, dataService: dataService));
+  runApp(MyApp(
+    authService: authService,
+    dataService: dataService,
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -30,7 +33,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: HomeScreen(authService: authService, dataService: dataService),
+      home: HomeScreen(
+        authService: authService,
+        dataService: dataService,
+      ),
     );
   }
 }
