@@ -36,7 +36,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _onAuthStateChanged() {
     setState(() {
-      // Rebuild when auth state changes
+      _data = null;
+      _error = null;
     });
   }
 

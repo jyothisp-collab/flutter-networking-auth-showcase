@@ -1,6 +1,6 @@
-import '../../core/network/api_client.dart';
-import '../../core/network/api_exceptions.dart';
-import 'data_model.dart';
+import 'package:flutter_networking_auth_showcase/core/network/api_client.dart';
+import 'package:flutter_networking_auth_showcase/core/network/api_exceptions.dart';
+import 'package:flutter_networking_auth_showcase/features/data/data_model.dart';
 
 class DataService {
   final ApiClient _apiClient;

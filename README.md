@@ -26,15 +26,28 @@ It is designed to be **small, focused, and easy to review**. It is not a complet
 ### Request Flow
 1. **Trigger**: UI calls `DataService.getProtectedData()`.
 2. **Inject Token**: `AuthInterceptor` adds the current access token.
-3. **Execute**: The request hits the network (simulated by `FakeBackendInterceptor`).
+3. **Execute**: The request hits the fake HTTP adapter (`FakeHttpClientAdapter`), which simulates API responses in-memory.
 4. **401 Handling**: If the token is expired, a 401 is returned.
 5. **Refresh**: `AuthInterceptor` halts the failure, calls `AuthService.refreshToken()`, and gets new tokens.
 6. **Retry**: The original request is re-fired with the new access token.
 7. **Success**: Data is returned seamlessly to the UI.
 
-## Testing
-- Tests are focused purely on the client behavior and token refresh mechanisms.
-- Run tests via `flutter test`.
+## Running
+
+```bash
+flutter pub get
+flutter run
+```
+
+The app uses a fake HTTP adapter — no real network calls are made. All responses are simulated in-memory to demonstrate the token refresh flow.
+
+## Validation
+
+```bash
+dart format .
+flutter analyze
+flutter test
+```
 
 ## Intentionally Out of Scope
 - **Secure Storage**: Keeping tokens in `flutter_secure_storage` is omitted to maintain simplicity.
